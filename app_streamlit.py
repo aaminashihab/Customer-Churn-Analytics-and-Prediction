@@ -47,7 +47,7 @@ st.markdown("""
         margin-bottom: 20px;
     }
     </style>
-    """, unsafe_allow_name_changes=True, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
 # Define predictive model
 def compute_risk_model(customer):
