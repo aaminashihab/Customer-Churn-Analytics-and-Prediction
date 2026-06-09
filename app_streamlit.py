@@ -390,7 +390,7 @@ with tab_sim:
                         Write a brief professional CRM synthesis report indicating customer vulnerabilities and 3 concrete retention strategies. Keep it clear, concise, and structured in Markdown.
                         """
                         response = client.models.generate_content(
-                            model='gemini-1.5-flash',
+                            model='gemini-2.5-flash',
                             contents=prompt
                         )
                         st.markdown(response.text)
