@@ -1,6 +1,6 @@
 {
   "name": "Customer Churn Analytics & Prediction",
-  "description": "An interactive, AI-powered system for predicting and wedding analytics for customer churn, featuring real-time risk indicators, retention strategy recommendations, cohort analysis, and bulk predictions based on the classic Telco Churn dataset.",
+  "description": "Churn risk simulator with Gemini forensic intelligence, Plotly speedometer gauge, and bulk CSV ingestion — Python, Streamlit, Pandas, Google Gemini API",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
