@@ -33,28 +33,22 @@ This application employs a lightweight, single-script Python dashboard architect
 
 ```mermaid
 flowchart TD
-    %% Styling
-    classDef ui fill:#3b82f6,stroke:#1d4ed8,stroke-width:2px,color:#fff;
-    classDef logic fill:#10b981,stroke:#047857,stroke-width:2px,color:#fff;
-    classDef data fill:#8b5cf6,stroke:#6d28d9,stroke-width:2px,color:#fff;
-    classDef external fill:#f59e0b,stroke:#d97706,stroke-width:2px,color:#fff;
-
-    A[User / Client Browser] ::: ui
+    A[User / Client Browser]
     
     subgraph StreamlitApp["Streamlit App Workspace (app_streamlit.py)"]
-        B[Streamlit UI Canvas] ::: ui
-        C[Individual Risk Simulator Tab] ::: ui
-        D[Bulk CSV Predictor Tab] ::: ui
-        E[Local Predictor Heuristics] ::: logic
-        F[Plotly Circular Gauge] ::: ui
-        G[Pandas Dataframe Parser] ::: data
+        B[Streamlit UI Canvas]
+        C[Individual Risk Simulator Tab]
+        D[Bulk CSV Predictor Tab]
+        E[Local Predictor Heuristics]
+        F[Plotly Circular Gauge]
+        G[Pandas Dataframe Parser]
         
-        K{Gemini Key Found?} ::: logic
-        J[Heuristic Fallback Engine] ::: logic
+        K{Gemini Key Found?}
+        J[Heuristic Fallback Engine]
     end
     
-    H[Environment Config: .env] ::: data
-    I[Google Gemini API (gemini-2.5-flash)] ::: external
+    H[Environment Config: .env]
+    I[Google Gemini API (gemini-2.5-flash)]
 
     %% Connections
     A <-->|Interacts with| B
@@ -76,8 +70,18 @@ flowchart TD
     K -->|No| J
     I -->|Generates synthesis brief & retention tactics| B
     J -->|Generates rule-based action plan| B
-```
 
+    %% Class Styling Definitions
+    classDef ui fill:#3b82f6,stroke:#1d4ed8,stroke-width:2px,color:#fff;
+    classDef logic fill:#10b981,stroke:#047857,stroke-width:2px,color:#fff;
+    classDef data fill:#8b5cf6,stroke:#6d28d9,stroke-width:2px,color:#fff;
+    classDef external fill:#f59e0b,stroke:#d97706,stroke-width:2px,color:#fff;
+
+    class A,B,C,D,F ui;
+    class E,K,J logic;
+    class G,H data;
+    class I external;
+```
 
 ---
 
