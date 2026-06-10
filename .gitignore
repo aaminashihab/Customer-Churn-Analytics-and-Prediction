@@ -1,8 +1,27 @@
-node_modules/
-build/
-dist/
-coverage/
-.DS_Store
-*.log
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
 .env*
 !.env.example
+.venv
+env/
+venv/
+ENV/
+
+# Streamlit
+.streamlit/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
