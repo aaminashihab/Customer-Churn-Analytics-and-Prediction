@@ -29,6 +29,56 @@ This application employs a lightweight, single-script Python dashboard architect
 * **Cognitive Engine**: Google Gemini API via the new `google-genai` Python SDK
 * **Credentials Manager**: Python Dotenv (environment variables management)
 
+### Architecture Flow
+
+```mermaid
+flowchart TD
+    %% Styling
+    classDef ui fill:#3b82f6,stroke:#1d4ed8,stroke-width:2px,color:#fff;
+    classDef logic fill:#10b981,stroke:#047857,stroke-width:2px,color:#fff;
+    classDef data fill:#8b5cf6,stroke:#6d28d9,stroke-width:2px,color:#fff;
+    classDef external fill:#f59e0b,stroke:#d97706,stroke-width:2px,color:#fff;
+
+    A[User / Client Browser] ::: ui
+    
+    subgraph StreamlitApp["Streamlit App Workspace (app_streamlit.py)"]
+        B[Streamlit UI Canvas] ::: ui
+        C[Individual Risk Simulator Tab] ::: ui
+        D[Bulk CSV Predictor Tab] ::: ui
+        E[Local Predictor Heuristics] ::: logic
+        F[Plotly Circular Gauge] ::: ui
+        G[Pandas Dataframe Parser] ::: data
+        
+        K{Gemini Key Found?} ::: logic
+        J[Heuristic Fallback Engine] ::: logic
+    end
+    
+    H[Environment Config: .env] ::: data
+    I[Google Gemini API (gemini-2.5-flash)] ::: external
+
+    %% Connections
+    A <-->|Interacts with| B
+    B --> C
+    B --> D
+    
+    C -->|User Parameters| E
+    E -->|Risk Category & Drivers| F
+    F -->|Render Speedometer Gauge| B
+    
+    D -->|Upload CSV| G
+    G -->|Row Data| E
+    E -->|Predictions| G
+    G -->|Batch Metrics & Data Table| B
+    
+    H -->|Read config| B
+    C -->|Generate Forensic Report| K
+    K -->|Yes| I
+    K -->|No| J
+    I -->|Generates synthesis brief & retention tactics| B
+    J -->|Generates rule-based action plan| B
+```
+
+
 ---
 
 ## ⚙️ Configuration & Setup
